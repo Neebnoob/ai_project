@@ -1,4 +1,4 @@
-#https://youtu.be/9H27CimgPsQ?si=lQkbvlpmZJfToL_s
+#https://youtu.be/9H27CimgPsQ?si=eZ4mH0eMdhrtBpFT&t=2515
 #up until 42:00
 
 from board import boards
