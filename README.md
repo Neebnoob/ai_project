@@ -1,2 +1,2 @@
 # ai_project
-Create an AI agent to accomplish a task (to be determined)
+Create an AI agent to achieve the highest score possible playing PacMan
