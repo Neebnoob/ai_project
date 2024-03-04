@@ -18,7 +18,7 @@ color = 'blue'
 PI = math.pi
 player_images = []
 
-
+#Loads Pacman assets
 player_images.append(pygame.transform.scale(pygame.image.load(f'assets/Pacman/PacmanOpen.png'), (45, 45)))
 player_images.append(pygame.transform.scale(pygame.image.load(f'assets/Pacman/PacmanSlightOpen.png'), (45, 45)))
 player_images.append(pygame.transform.scale(pygame.image.load(f'assets/Pacman/PacmanClosed.png'), (45, 45)))
@@ -42,6 +42,8 @@ def draw_board():
     num2 = (WIDTH // 30)
 
     #REFERENCE pacman pierces.PNG
+
+    #Calls upon board.py
 
     # 0 = empty black rectangle, 1 = dot, 2 = big dot, 3 = vertical line,
     # 4 = horizontal line, 5 = top right, 6 = top left, 7 = bot left, 8 = bot right
@@ -100,7 +102,7 @@ def check_position(centerx, centery):
         if direction == 3:
             if level[(centery - num3) // num1][centerx // num2] < 3:
                 turns[2] = True
-
+    #player is already heading up (2) or down (3)
         if direction == 2 or direction == 3:
             if 12 <= centerx % num2 <= 18:
                 if level[(centery + num3) // num1][centerx // num2] < 3:
@@ -112,6 +114,7 @@ def check_position(centerx, centery):
                     turns[1] = True
                 if level[centery // num1][(centerx + num2) // num2] < 3:
                     turns[0] = True
+    #player is already heading right (0) or left (1)                
         if direction == 0 or direction == 1:
             if 12 <= centerx % num2 <= 18:
                 if level[(centery + num1) // num1][centerx // num2] < 3:
@@ -130,7 +133,7 @@ def check_position(centerx, centery):
     return turns
 
 def move_player(play_x, play_y):
-    # r, l, u, d
+    # R, L, U, D
     if direction == 0 and turns_allowed[0]:
         play_x += player_speed
     elif direction == 1 and turns_allowed[1]:
@@ -150,7 +153,7 @@ while run:
     if counter < 19:
         counter += 1
         if counter > 3:
-            flicker = False
+            flicker = False #Used for the big white dots to flash
     else:
         counter = 0
         flicker = True
@@ -159,6 +162,7 @@ while run:
     screen.fill('black')
     draw_board()
     draw_player()
+    #sets position of plater
     center_x = player_x + 23
     center_y = player_y + 24
     turns_allowed = check_position(center_x, center_y)
@@ -199,7 +203,7 @@ while run:
         direction = 3
 
 
-        #offscreen
+        #offscreen mechanics
     if player_x > 900:
         player_x = -47
     elif player_x < -50:
